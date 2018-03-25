@@ -1,0 +1,34 @@
+var express = require('express');
+var router = express.Router();
+var Guitar = require('../models/guitar.js')
+	
+
+	router.get('/',function(req, res){
+		res.render('index');
+	});
+
+	router.get('/guitarsData', function(req, res) {
+		Guitar.find(function(err, guitars) {
+		if (err){
+			res.send(err);	
+		}else{
+			res.json(guitars);	
+		}
+
+		})
+	});
+
+	router.post('/guitarsData', function(req, res, next) {
+			var guitar = new Guitar();
+			guitar.brand = req.body.brand;
+			guitar.scale = req.body.scale;
+			guitar.year = req.body.year;
+			guitar.save(function(err) {
+				if (err)
+					res.send(err);
+				res.json({ message: 'Guitar Created!' });
+			});
+	});
+
+
+module.exports = router;

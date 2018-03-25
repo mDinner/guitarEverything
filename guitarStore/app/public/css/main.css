@@ -1,0 +1,25 @@
+.container > h1 {
+	margin-top: 6rem!important;
+}
+
+.siteTitle {
+	text-align: center;
+	
+}
+
+.homeAbout {
+		margin:	15px 175px;
+}
+
+.login, .register, span.glyphicon.glyphicon-log-in{
+	/*color: green !important;*/
+	margin: auto 2px;
+}
+.login:hover, .register:hover {
+		background: rgb(52,58,64) !important;
+	}
+
+.guitar {
+	height: 200px;
+	margin: auto;
+}

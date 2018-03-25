@@ -1,0 +1,52 @@
+doctype html
+html
+	head
+		link(rel="stylesheet" type="text/css" href="/css/main.css")
+		link(rel="stylesheet" type="text/css" href="/css/user.css")
+		link(rel="stylesheet" type="text/css" href="/css/bootstrap.min.css")
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device.width, ititial-scale=1")
+	body
+		nav.navbar.navbar-expand-md.navbar-dark.fixed-top.bg-dark
+			a.navbar-brand(href='#') Guitar Dictionary
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarCollapse.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto
+					li.nav-item
+						a.nav-link(href='#') Axes
+					li.nav-item
+						a.nav-link(href='#') Docs
+					li.nav-item
+						a.nav-link(href='#') FX
+					li.nav-item
+						a.nav-link(href='#') Songs 
+					li.nav-item
+						a.nav-link(href='#') About
+					.dropdown
+						button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+							| Dropdown button
+						.dropdown-menu(aria-labelledby='dropdownMenuButton')
+							a.dropdown-item(href='#') Action
+							a.dropdown-item(href='#') Another action
+							a.dropdown-item(href='#') Something else here
+				ul.nav.navbar-nav.navbar-right
+					li.nav-item
+						a.nav-link.register(href="/user/register")
+							span.glyphicon.glyphicon-user
+							|  Register
+					li.nav-item
+						a.nav-link.login(href="/user/login")
+							span.glyphicon.glyphicon-log-in
+							|  Login
+		// Begin page content
+		main.container(role='main')
+			h1.siteTitle Guitar Dictionary
+			p.homeAbout
+				em
+					| The exciting and wonderful world of guitar.  Far and in between with such fascinating history.  We take a broad look and view the guitars that made a great impact on the musicians that tame these beasts and the music they inspired.
+
+
+				block content
+			
