@@ -1,10 +1,10 @@
 extends layout 
 block content 
 	h2.register-header Login
-	form(id="register" action="/register" method="POST" accept-charset="utf-8" ajax="true")
+	form(id="register" action="/user/logUserIn" method="POST" accept-charset="utf-8" ajax="true")
 		.form-group
-			label Username or Email
-			input(class="form-control" type="text" name="username" placeholder="Username")
+			label Email
+			input(class="form-control" type="text" name="email" placeholder="Username or Email")
 		.form-group
 			label Password
 			input(class="form-control" type="text" name="password" placeholder="Password")

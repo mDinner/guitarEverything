@@ -1,9 +1,13 @@
 var express    = require('express'); 		// call express
-var app        = express(); 				// define our app using express
+var path 	   = require('path');
 var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
-var path 	   = require('path');
+var monSess    = require('mongoose-session');
+var session    = require('express-session');
+var bcrypt 	   = require('bcrypt');
+const MongoStore = require('connect-mongo')(session);
 
+var app        = express(); 				// define our app using express
 
 
 // app config
@@ -11,6 +15,17 @@ app.use(bodyParser());
 app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, './app/views'));
 app.use(express.static(__dirname + '/app/public'));
+
+const connection = mongoose.createConnection('mongodb://localhost/test');
+
+// set up sessions
+app.use(session({
+  key: 'session',
+  secret: 'doggy',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({mongooseConnection: connection})
+}));
 
 // route section
 var router = express.Router(); 
