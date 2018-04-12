@@ -1,7 +1,7 @@
 extends layout 
 block content 
 	h2.register-header Sign Up
-	form(id="register" action="/register" method="POST" accept-charset="utf-8" ajax="true")
+	form(id="register" action="/user/register" method="POST" accept-charset="utf-8" ajax="true")
 		.form-group
 			label Username
 			input(class="form-control" type="text" name="username" placeholder="Username")
