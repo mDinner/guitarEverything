@@ -4,7 +4,6 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var monSess    = require('mongoose-session');
 var session    = require('express-session');
-var bcrypt 	   = require('bcrypt');
 const MongoStore = require('connect-mongo')(session);
 
 var app        = express(); 				// define our app using express
