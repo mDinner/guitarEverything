@@ -7,6 +7,10 @@ var Guitar = require('../models/guitar.js')
 		res.render('index');
 	});
 
+	router.get('/addGuitar', function(req, res) {
+		res.render('addGuitar');
+	});
+
 	router.get('/guitarsData', function(req, res) {
 		Guitar.find(function(err, guitars) {
 		if (err){
@@ -21,6 +25,8 @@ var Guitar = require('../models/guitar.js')
 	router.post('/guitarsData', function(req, res, next) {
 			var guitar = new Guitar();
 			guitar.brand = req.body.brand;
+			guitar.guitarType = req.body.guitarType;
+			guitar.model = req.body.model;
 			guitar.scale = req.body.scale;
 			guitar.year = req.body.year;
 			guitar.save(function(err) {

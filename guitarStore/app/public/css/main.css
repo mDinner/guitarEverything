@@ -11,9 +11,19 @@
     margin-right: 15px;
     width: 220px;
 }
+
 .guitar {
 	height: 200px;
 	margin: auto;
+}
+
+.guitarDetail {
+	border: 0.25px solid lightgray;
+	box-shadow: -2px 4px 5px 4px lightgrey;
+    display: inline-block;
+    margin: 25px 50px;
+    min-width: 250px;
+    padding: 40px 50px;
 }
 
 .guitarContainer{
