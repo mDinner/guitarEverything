@@ -1,0 +1,17 @@
+extends layout 
+block content 
+	h2.register-header Sign Up
+	form(id="register" action="/user/register" method="POST" accept-charset="utf-8" ajax="true")
+		.form-group
+			label Username
+			input(class="form-control" type="text" name="username" placeholder="Username")
+		.form-group
+			label Email
+			input(class="form-control" type="email" name="email" placeholder="Email")
+		.form-group
+			label Password
+			input(class="form-control" type="text" name="password" placeholder="Password")
+		br
+		button(type="submit" class="btn btn-success") Sign Up
+	script(src="/js/jquery-1.11.3.min.js")
+	script(src="/js/main.js")

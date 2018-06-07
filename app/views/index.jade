@@ -1,0 +1,19 @@
+extends layout 
+block content
+	h1.siteTitle Guitar Dictionary
+	p.homeAbout
+		em
+			| The wonderful world of guitar and the music it creates
+	.guitarContainer
+		h2.guitarSearchTitle Search Guitars
+		form(id="createGuitar" action="/guitarsData" method="POST" accept-charset="utf-8" ajax="true")
+			input(class="input" type="text" name="brand" placeholder="Brand")
+			input(class="input" type="text" name="guitarType" placeholder="Guitar Type")
+			input(class="input" type="text" name="model" placeholder="Model")
+			br
+			button(type="submit" class="btn btn-primary") Search
+		br
+		a(href="/addGuitar") Add Guitar
+		#result
+		script(src="/js/jquery-1.11.3.min.js")
+		script(src="/js/main.js")
