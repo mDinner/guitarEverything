@@ -3,6 +3,9 @@ $(document).ready(function(){
 	var path = window.location.pathname.split('/')
 	path = path[2]
 
+	var fullPath = window.location.pathname
+
+
  $.ajax({
     type: 'GET',
     dataType: "json",
@@ -44,9 +47,10 @@ $(document).ready(function(){
 
 
 
- console.log('hello!!')
+ console.log('hello!!3232')
  var piq = $('#pic-upload')
  console.log('piq: ', piq)
+
  $('#pic-upload').on('change`', function(e) {
  	console.log('e: ', e)
  	console.log('arguments: ', arguments)

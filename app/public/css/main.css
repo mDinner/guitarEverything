@@ -12,6 +12,27 @@
     width: 220px;
 }
 
+.fxAll {
+    text-align: left;
+    padding-left: 20px;
+    box-shadow: -2px 3px 1px 3px lightgrey;
+    margin: 15px;
+    border: 1px solid black;
+    border-radius: 8px;
+    display: inline-block;
+    width: 350px;
+    padding: 5px;
+
+}
+
+.fxAll div {
+    padding-left: 10px;
+}
+
+.fx-select {
+    min-width: 300px;
+}
+
 #guitar {
     text-align: center;
     padding: 150px;
@@ -39,6 +60,10 @@
 .guitarDetail:hover {
     border: 0.25px solid black;
     cursor: pointer;
+}
+
+.guitarSearchTitle {
+    margin-top: 0;
 }
 
 .guitarfx a {

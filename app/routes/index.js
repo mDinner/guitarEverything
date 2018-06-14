@@ -38,7 +38,7 @@ router.post('/guitarsData', function(req, res, next) {
 
 router.get('/guitarsData/:guitar_id', function(req, res) {
 	Guitar.findById(req.params.guitar_id, function(err, guitar) {
-		console.log('guitar: ', guitar);
+		console.log('guitar11: ', guitar);
 		if (err)
 			res.send(err);
 		res.render('guitar');
@@ -47,16 +47,13 @@ router.get('/guitarsData/:guitar_id', function(req, res) {
 
 router.get('/guitarsData/api/:guitar_id', function(req, res) {
 	Guitar.findById(req.params.guitar_id, function(err, guitar) {
-		console.log('guitar: ', guitar);
+		console.log('guitar22: ', guitar);
 		if (err)
 			res.send(err);
 		res.json(guitar);
 	});
 });
 
-router.get('/fx', function(req, res) {
-	res.render('fx');
-});
 // router.post('/guitarData', function(req, res) {
 // 	Show.findById(req.params.guitar_id, function(err, show) {
 // 		if (err)
