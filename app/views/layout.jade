@@ -5,6 +5,7 @@ html
 		link(rel="stylesheet" type="text/css" href="/css/user.css")
 		link(rel="stylesheet" type="text/css" href="/css/bootstrap.min.css")
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css', rel='stylesheet')
 		meta(charset="utf-8")
 		meta(name="viewport" content="width=device.width, ititial-scale=1")
 	body
@@ -19,7 +20,7 @@ html
 					li.nav-item
 						a.nav-link(href='#') Docs
 					li.nav-item
-						a.nav-link(href='/fx') FX
+						a.nav-link(href='/fx/all') FX
 					li.nav-item
 						a.nav-link(href='/songs') Songs 
 					li.nav-item
@@ -35,7 +36,8 @@ html
 							|  Login
 		// Begin page content
 		main.container(role='main')
-
-
-				block content
+			block content
+			script(src="/js/libs/jquery-1.11.3.min.js")
+			script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js')
+			script(src="/js/build/bundle.js")
 			

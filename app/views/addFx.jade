@@ -1,0 +1,18 @@
+extends layout 
+block content 
+	h2.register-header Add FX Pedal
+	form(id="addFx" action="/fx/fxData" method="POST" accept-charset="utf-8" ajax="true")
+		.form-group
+			label Type
+			input(class="form-control" type="text" name="fxType" placeholder="Type of Effect")
+		.form-group
+			label Brand
+			input(class="form-control" type="text" name="brand" placeholder="Brand")
+		.form-group
+			label Name
+			input(class="form-control" type="text" name="fxName" placeholder="Name")
+		.form-group
+			label Link
+			input(class="form-control" type="text" name="link" placeholder="Link")
+		br
+		button(type="submit" class="btn btn-success") Add Fx

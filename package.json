@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "js": "browserify ./app/public/js/*.js > app/public/js/build/bundle.js",
+    "start": "nodemon --exec 'npm run start'"
   },
   "author": "Michael Dinner",
   "license": "ISC",

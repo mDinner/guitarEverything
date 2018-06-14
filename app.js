@@ -29,15 +29,18 @@ app.use(session({
 // route section
 var router = express.Router(); 
 var Guitar = require('./app/models/guitar.js')
+var Fx = require('./app/models/fx.js')
 var User = require('./app/models/user.js')
 var routes = require('./app/routes/index');
 var user = require('./app/routes/user');
+var fx = require('./app/routes/fx');
 // require( './app/routes' )( router, Guitar );
 // require('./app/routes/user')( router, User);
 // app.use(router) 
 
 app.use('/', routes);
 app.use('/user', user);
+app.use('/fx', fx);
 
 mongoose.connect('mongodb://localhost/test');
 

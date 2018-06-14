@@ -5,25 +5,28 @@ block content
 		em
 			| The wonderful world of guitar noise pedals and boxes
 	.guitarContainer
-		h2.guitarSearchTitle Search FX
-		.guitarfx
-			a(href='/pedals/compression') compression
-			a(href='/pedals/chorus') chorus
-			a(href='/pedals/delay') delay
-			a(href='/pedals/detuner') detuner
-			a(href='/pedals/distortion') distortion
-			a(href='/pedals/flanger') flanger
-			a(href='/pedals/loop') loop
-			a(href='/pedals/overdrive') overdrive
-			a(href='/pedals/octaver') octaver
-			a(href='/pedals/pitch') pitch
-			a(href='/pedals/phaser') phaser
-			a(href='/pedals/stutter') stutter
-			a(href='/pedals/reverb') reverb
-			a(href='/pedals/rotary') rotary
-			a(href='/pedals/tremelo') tremelo
-			a(href='/pedals/volume') volume
-			a(href='/pedals/wah') wah
-			a(href='/pedals/other') other
+		a(href='/fx/addFx') add fx
 		br
-		script(src="/js/jquery-1.11.3.min.js")
+		select.fx-select(name='states[]', multiple='multiple')
+			option(value='compression') Compression
+			option(value='chorus') Chorus
+			option(value='delay') Delay
+			option(value='detuner') Detuner
+			option(value='distortion') Distortion
+			option(value='flanger') Flanger
+			option(value='loop') Loop
+			option(value='overdrive') Overdrive
+			option(value='octaver') Octaver
+			option(value='pitch') Pitch
+			option(value='phaser') Phaser
+			option(value='stutter') Stutter
+			option(value='reverb') Reverb
+			option(value='rotary') Rotary
+			option(value='tremelo') Tremelo
+			option(value='volume') Volume
+			option(value='wah') Wah
+			option(value='other') Other
+		h2.guitarSearchTitle.btn.btn-primary Search FX
+		.guitarfx
+		br
+		#fx
