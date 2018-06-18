@@ -13,43 +13,43 @@ router.get('/addGuitar', function(req, res) {
 
 router.get('/guitarsData', function(req, res) {
 	Guitar.find(function(err, guitars) {
-	if (err){
-		res.send(err);	
-	}else{
-		res.json(guitars);	
-	}
-
+		if (err){
+			res.send(err);	
+		}else{
+			res.json(guitars);	
+		}
 	})
 });
 
 router.post('/guitarsData', function(req, res, next) {
-		var guitar = new Guitar();
-		guitar.brand = req.body.brand;
-		guitar.guitarType = req.body.guitarType;
-		guitar.model = req.body.model;
-		guitar.scale = req.body.scale;
-		guitar.year = req.body.year;
-		guitar.save(function(err) {
-			if (err)
-				res.send(err);
-			res.json({ message: 'Guitar Created!' });
-		});
+	var guitar = new Guitar();
+	guitar.brand = req.body.brand;
+	guitar.guitarType = req.body.guitarType;
+	guitar.model = req.body.model;
+	guitar.scale = req.body.scale;
+	guitar.year = req.body.year;
+	guitar.save(function(err) {
+		if (err) {
+			res.send(err);
+		}
+		res.json({ message: 'Guitar Created!' });
+	});
 });
 
 router.get('/guitarsData/:guitar_id', function(req, res) {
 	Guitar.findById(req.params.guitar_id, function(err, guitar) {
-		console.log('guitar11: ', guitar);
-		if (err)
+		if (err) {
 			res.send(err);
+		}
 		res.render('guitar');
 	});
 });
 
 router.get('/guitarsData/api/:guitar_id', function(req, res) {
 	Guitar.findById(req.params.guitar_id, function(err, guitar) {
-		console.log('guitar22: ', guitar);
-		if (err)
+		if (err) {
 			res.send(err);
+		}
 		res.json(guitar);
 	});
 });

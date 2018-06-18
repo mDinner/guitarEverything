@@ -31,14 +31,17 @@ $(document).ready(function(e) {
         $('#fx').append(elements);
       }
     });
-    
+
+    // init select input    
     $('.fx-select').select2();
+
     $('.guitarSearchTitle').on('click', function(e) {
+
       var selectedTypes = $('.fx-select').val()
+
       selectedTypes.forEach(function(x) {
         x = x.toLowerCase()
       })
-      console.log('value: ', selectedTypes)
 
       // clear content
       $('#fx').empty()
@@ -47,10 +50,9 @@ $(document).ready(function(e) {
 
       // loop thru displayedFx, show any if type exists in value
       displayedFx.forEach(function (fx) {
-        console.log('fx: ', fx)
-        // if   fx.fxType 
+        // if element is in selected types, add it
         if (selectedTypes.indexOf(fx.fxType) !== -1) {
-            elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
+          elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
         }
       }) 
       $('#fx').append(elements);
@@ -65,96 +67,71 @@ $(document).ready(function(e) {
 
 },{"./utils":4}],2:[function(require,module,exports){
 (function($){
-
-	console.log('hey!!')
-
 	var path = window.location.pathname.split('/')
-	path = path[2]
 
-  var fullPath = window.location.pathname
+  if (path[1] === 'guitarsData' && path[2]) {
 
+    var interval = setInterval(function() {
+    	$.ajax({
+          type: 'GET',
+          dataType: "json",
+          url: '/guitarsData/api/' + path[2], 
+          success: function(guitar) {
+        		$('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+            // guitar.forEach(function(guitar)
+            //   $('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+            // });
+           }
+       });
 
-
-	$.ajax({
-      type: 'GET',
-      dataType: "json",
-      url: '/guitarsData/api/' + path, 
-      success: function(guitar) {
-
-      	console.log('guitar: ', guitar)
-
-		$('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-        // guitar.forEach(function(guitar)
-        //   $('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-        // });
-     }
-   });
-	
-
-	//$('a.delete-show').attr('href', '/');
-
+      clearInterval(interval)
+    }, 500)
+  }
 
 })(jQuery);
 
 },{}],3:[function(require,module,exports){
 $(document).ready(function(){
 
-	var path = window.location.pathname.split('/')
-	path = path[2]
-
-	var fullPath = window.location.pathname
-
-
- $.ajax({
-    type: 'GET',
-    dataType: "json",
-    url: '../guitarsData', 
-    success: function(guitars) {
-      guitars.forEach(function(guitar) {
-	    	console.log(guitar)
-
-        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-      });
-      
-   }
- });
-
-
-
-  var interval = setInterval(function() {
-
-		var guitarDetail = document.querySelectorAll('.guitarDetail');
-
-		// if data, set up and clear interval		
-		if (guitarDetail.length > 0) {
-			for (var i = 0; i < guitarDetail.length; i++) {
-				console.log('guitarDetail[i]: ', guitarDetail[i])
-
-				guitarDetail[i].addEventListener('click', clickHandle)
-				function clickHandle(e) {
-
-					console.log('click, e: ', e);
-					window.tester = e
-					window.location = 'guitarsData/' + e.target.getAttribute('id');
+	if (window.location.pathname === '/') {
+		var requestSuccess = false
+		var interval1 = setInterval(function() {
+			$.ajax({
+		    type: 'GET',
+		    dataType: "json",
+		    url: '../guitarsData', 
+		    success: function(guitars) {
+		      guitars.forEach(function(guitar) {
+			    	console.log(guitar)
+		        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+		      });
+		    }
+			});
+			clearInterval(interval1)
+		}, 500)	
+	
+	  var interval2 = setInterval(function() {
+			var guitarDetail = document.querySelectorAll('.guitarDetail');
+			// if data, set up and clear interval		
+			if (guitarDetail.length > 0) {
+				for (var i = 0; i < guitarDetail.length; i++) {
+					guitarDetail[i].addEventListener('click', clickHandle)
+					function clickHandle(e) {
+						window.location = 'guitarsData/' + e.target.getAttribute('id');
+					}
 				}
+				clearInterval(interval2)
 			}
-
-			clearInterval(interval)
-		}
-
-  }, 50)
+	  }, 100)
+	}
 
 
-
- console.log('hello!!3232')
  var piq = $('#pic-upload')
- console.log('piq: ', piq)
 
  $('#pic-upload').on('change`', function(e) {
  	console.log('e: ', e)
  	console.log('arguments: ', arguments)
  })
-
 
 });
 },{}],4:[function(require,module,exports){
