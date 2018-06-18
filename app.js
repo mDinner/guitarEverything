@@ -18,10 +18,6 @@ app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, './app/views'));
 app.use(express.static(__dirname + '/app/public'));
 
-var connectString = 'mongodb://' + secrets.dbUser + ':' + secrets.dbPw + secrets.secrets
-var connectStr = 'mongodb://mdinner:duckSauc3@ds261450.mlab.com:61450/guitar'
-console.log('connectString: ', connectString)
-
 const connection = mongoose.createConnection(secrets.connectStr);
 
 // set up sessions
