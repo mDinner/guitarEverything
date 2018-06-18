@@ -5,12 +5,7 @@ var mongoose   = require('mongoose');
 var monSess    = require('mongoose-session');
 var session    = require('express-session');
 var secrets    = require('./secrets')
-const MongoStore = require('connect-mongo')(session);
-
 var app        = express(); 				// define our app using express
-
-
-console.log('secrets: ', secrets)
 
 // app config
 app.use(bodyParser());
@@ -19,6 +14,7 @@ app.set('views', path.join(__dirname, './app/views'));
 app.use(express.static(__dirname + '/app/public'));
 
 const connection = mongoose.createConnection(secrets.connectStr);
+const MongoStore = require('connect-mongo')(session);
 
 // set up sessions
 app.use(session({
@@ -37,9 +33,6 @@ var User = require('./app/models/user.js')
 var routes = require('./app/routes/index');
 var user = require('./app/routes/user');
 var fx = require('./app/routes/fx');
-// require( './app/routes' )( router, Guitar );
-// require('./app/routes/user')( router, User);
-// app.use(router) 
 
 app.use('/', routes);
 app.use('/user', user);

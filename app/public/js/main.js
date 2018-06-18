@@ -1,60 +1,43 @@
 $(document).ready(function(){
 
-	var path = window.location.pathname.split('/')
-	path = path[2]
-
-	var fullPath = window.location.pathname
-
-
- $.ajax({
-    type: 'GET',
-    dataType: "json",
-    url: '../guitarsData', 
-    success: function(guitars) {
-      guitars.forEach(function(guitar) {
-	    	console.log(guitar)
-
-        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-      });
-      
-   }
- });
-
-
-
-  var interval = setInterval(function() {
-
-		var guitarDetail = document.querySelectorAll('.guitarDetail');
-
-		// if data, set up and clear interval		
-		if (guitarDetail.length > 0) {
-			for (var i = 0; i < guitarDetail.length; i++) {
-				console.log('guitarDetail[i]: ', guitarDetail[i])
-
-				guitarDetail[i].addEventListener('click', clickHandle)
-				function clickHandle(e) {
-
-					console.log('click, e: ', e);
-					window.tester = e
-					window.location = 'guitarsData/' + e.target.getAttribute('id');
+	if (window.location.pathname === '/') {
+		var requestSuccess = false
+		var interval1 = setInterval(function() {
+			$.ajax({
+		    type: 'GET',
+		    dataType: "json",
+		    url: '../guitarsData', 
+		    success: function(guitars) {
+		      guitars.forEach(function(guitar) {
+			    	console.log(guitar)
+		        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+		      });
+		    }
+			});
+			clearInterval(interval1)
+		}, 500)	
+	
+	  var interval2 = setInterval(function() {
+			var guitarDetail = document.querySelectorAll('.guitarDetail');
+			// if data, set up and clear interval		
+			if (guitarDetail.length > 0) {
+				for (var i = 0; i < guitarDetail.length; i++) {
+					guitarDetail[i].addEventListener('click', clickHandle)
+					function clickHandle(e) {
+						window.location = 'guitarsData/' + e.target.getAttribute('id');
+					}
 				}
+				clearInterval(interval2)
 			}
-
-			clearInterval(interval)
-		}
-
-  }, 50)
+	  }, 100)
+	}
 
 
-
- console.log('hello!!3232')
  var piq = $('#pic-upload')
- console.log('piq: ', piq)
 
  $('#pic-upload').on('change`', function(e) {
  	console.log('e: ', e)
  	console.log('arguments: ', arguments)
  })
-
 
 });
