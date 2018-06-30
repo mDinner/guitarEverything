@@ -5,7 +5,8 @@ block content
 		em
 			| The wonderful world of guitar noise pedals and boxes
 	.guitarContainer
-		a(href='/fx/addFx') add fx
+		.addFxButtonContainer
+			a.btn.btn-secondary(role='button' href='/fx/addFx') Add FX
 		br
 		select.fx-select(name='states[]', multiple='multiple')
 			option(value='compression') Compression

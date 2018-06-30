@@ -3,15 +3,13 @@ var utils = require('./utils')
 
 $(document).ready(function(e) {
 
-  var path = window.location.pathname
+  var path = window.location.pathname;
 
   // add fx page
   utils.post("form#addFx", '/fx/all')
 
   // all fx page
   if (path === '/fx/all') {
-    console.log('hello')
-
     var displayedFx = [];
 
     $.ajax({
@@ -26,7 +24,7 @@ $(document).ready(function(e) {
           displayedFx.push({
             fxType: fx.fxType,
             data: fx
-          })
+          });
         });
         $('#fx').append(elements);
       }
@@ -36,39 +34,30 @@ $(document).ready(function(e) {
     $('.fx-select').select2();
 
     $('.guitarSearchTitle').on('click', function(e) {
-
-      var selectedTypes = $('.fx-select').val()
-
-      selectedTypes.forEach(function(x) {
-        x = x.toLowerCase()
-      })
+      var selectedTypes = $('.fx-select').val();
 
       // clear content
-      $('#fx').empty()
-
-      var elements = ''
+      $('#fx').empty();
 
       // loop thru displayedFx, show any if type exists in value
+      var elements = '';
       displayedFx.forEach(function (fx) {
         // if element is in selected types, add it
         if (selectedTypes.indexOf(fx.fxType) !== -1) {
           elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
         }
-      }) 
+      }); 
       $('#fx').append(elements);
-
-
-    })
-    console.log('turd sandwhich')
-
+    });
   }
 });  
 
 
-},{"./utils":4}],2:[function(require,module,exports){
+},{"./utils":5}],2:[function(require,module,exports){
 (function($){
 	var path = window.location.pathname.split('/')
 
+  // get individual guitar, ex: http://localhost:8000/guitarsData/5b2836ea657f0d4d4537c563
   if (path[1] === 'guitarsData' && path[2]) {
 
     var interval = setInterval(function() {
@@ -78,9 +67,6 @@ $(document).ready(function(e) {
           url: '/guitarsData/api/' + path[2], 
           success: function(guitar) {
         		$('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-            // guitar.forEach(function(guitar)
-            //   $('#guitar').append('<div class="guitarDetail"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
-            // });
            }
        });
 
@@ -94,6 +80,7 @@ $(document).ready(function(e) {
 $(document).ready(function(){
 
 	if (window.location.pathname === '/') {
+		console.log('hey!!!')
 		var requestSuccess = false
 		var interval1 = setInterval(function() {
 			$.ajax({
@@ -131,10 +118,20 @@ $(document).ready(function(){
  $('#pic-upload').on('change`', function(e) {
  	console.log('e: ', e)
  	console.log('arguments: ', arguments)
- })
+ });
+
+
+ var myDropzone = new Dropzone("div#dropzoneInput", { url: "/file/post"});
+
 
 });
 },{}],4:[function(require,module,exports){
+$(document).ready(function(){
+  $('a.nav-link').on('click', function(){
+    console.log('poop');
+  })
+});
+},{}],5:[function(require,module,exports){
 function post(target, nextPath) {
   
   $(target).submit(function(e) {
@@ -164,4 +161,4 @@ function post(target, nextPath) {
 module.exports = {
 	post: post
 }
-},{}]},{},[1,2,3,4]);
+},{}]},{},[1,2,3,4,5]);

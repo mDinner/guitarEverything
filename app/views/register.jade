@@ -1,15 +1,16 @@
 extends layout 
 block content 
-	h2.register-header Sign Up
+	h2.register-header Register
 	form(id="register" action="/user/register" method="POST" accept-charset="utf-8" ajax="true")
 		.form-group
 			label Username
-			input(class="form-control" type="text" name="username" placeholder="Username")
+			input(class="form-control" type="text" name="username" placeholder="Username" required=true)
 		.form-group
 			label Email
-			input(class="form-control" type="email" name="email" placeholder="Email")
+			input(class="form-control" type="email" name="email" placeholder="Email" required=true)
 		.form-group
 			label Password
-			input(class="form-control" type="text" name="password" placeholder="Password")
+			input(class="form-control" type="text" name="password" placeholder="Password" required=true)
 		br
-		button(type="submit" class="btn btn-success") Sign Up
+		.registerButton
+			button(type="submit" class="btn btn-success") Sign Up

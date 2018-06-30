@@ -1,16 +1,34 @@
 extends layout 
 block content 
 	h2.register-header Add FX Pedal
-	form(id="addFx" action="/fx/fxData" method="POST" accept-charset="utf-8" ajax="true")
+	form.needs-validation(nonvalidate='' id="addFx" action="/fx/fxData" method="POST" accept-charset="utf-8" ajax="true")
 		.form-group
 			label Type
-			input(class="form-control" type="text" name="fxType" placeholder="Type of Effect")
+			select(class="form-control" type="text" name="fxType" placeholder="Type of Effect" required='')
+				option(selected='' value='Compression') Compression
+				option(value='Chorus') Chorus
+				option(value='Delay') Delay
+				option(value='Detuner') Detuner
+				option(value='Distortion') Distortion
+				option(value='Flanger') Flanger
+				option(value='Loop') Loop
+				option(value='Overdrive') Overdrive
+				option(value='Octaver') Octaver
+				option(value='Pitch') Pitch
+				option(value='Phaser') Phaser
+				option(value='Stutter') Stutter
+				option(value='Reverb') Reverb
+				option(value='Rotary') Rotary
+				option(value='Tremelo') Tremelo
+				option(value='Volume') Volume
+				option(value='Wah') Wah
+				option(value='Other') Other
 		.form-group
 			label Brand
-			input(class="form-control" type="text" name="brand" placeholder="Brand")
+			input(class="form-control" type="text" name="brand" placeholder="Brand" required=true)
 		.form-group
 			label Name
-			input(class="form-control" type="text" name="fxName" placeholder="Name")
+			input(class="form-control" type="text" name="fxName" placeholder="Name" required=true)
 		.form-group
 			label Link
 			input(class="form-control" type="text" name="link" placeholder="Link")

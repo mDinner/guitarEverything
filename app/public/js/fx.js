@@ -2,15 +2,13 @@ var utils = require('./utils')
 
 $(document).ready(function(e) {
 
-  var path = window.location.pathname
+  var path = window.location.pathname;
 
   // add fx page
   utils.post("form#addFx", '/fx/all')
 
   // all fx page
   if (path === '/fx/all') {
-    console.log('hello')
-
     var displayedFx = [];
 
     $.ajax({
@@ -25,7 +23,7 @@ $(document).ready(function(e) {
           displayedFx.push({
             fxType: fx.fxType,
             data: fx
-          })
+          });
         });
         $('#fx').append(elements);
       }
@@ -35,31 +33,21 @@ $(document).ready(function(e) {
     $('.fx-select').select2();
 
     $('.guitarSearchTitle').on('click', function(e) {
-
-      var selectedTypes = $('.fx-select').val()
-
-      selectedTypes.forEach(function(x) {
-        x = x.toLowerCase()
-      })
+      var selectedTypes = $('.fx-select').val();
 
       // clear content
-      $('#fx').empty()
-
-      var elements = ''
+      $('#fx').empty();
 
       // loop thru displayedFx, show any if type exists in value
+      var elements = '';
       displayedFx.forEach(function (fx) {
         // if element is in selected types, add it
         if (selectedTypes.indexOf(fx.fxType) !== -1) {
           elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
         }
-      }) 
+      }); 
       $('#fx').append(elements);
-
-
-    })
-    console.log('turd sandwhich')
-
+    });
   }
 });  
 

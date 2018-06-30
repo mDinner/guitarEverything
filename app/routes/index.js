@@ -1,14 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var Guitar = require('../models/guitar.js')
-	
 
 router.get('/',function(req, res){
 	res.render('index');
 });
 
+router.get('/about', function(req, res) {
+	res.render('about');
+})
+
 router.get('/addGuitar', function(req, res) {
 	res.render('addGuitar');
+});
+
+router.get('/docs', function(req, res) {
+	res.render('docs');
 });
 
 router.get('/guitarsData', function(req, res) {
@@ -18,13 +25,15 @@ router.get('/guitarsData', function(req, res) {
 		}else{
 			res.json(guitars);	
 		}
-	})
+	});
 });
 
 router.post('/guitarsData', function(req, res, next) {
 	var guitar = new Guitar();
 	guitar.brand = req.body.brand;
+	guitar.strings = req.body.strings;
 	guitar.guitarType = req.body.guitarType;
+	guitar.soundType = req.body.soundType;
 	guitar.model = req.body.model;
 	guitar.scale = req.body.scale;
 	guitar.year = req.body.year;
@@ -32,7 +41,7 @@ router.post('/guitarsData', function(req, res, next) {
 		if (err) {
 			res.send(err);
 		}
-		res.json({ message: 'Guitar Created!' });
+		res.redirect('/');
 	});
 });
 
@@ -63,5 +72,8 @@ router.get('/guitarsData/api/:guitar_id', function(req, res) {
 // 	});
 // })
 
+router.get('/songs', function(req, res) {
+	res.render('songs');
+});
 
 module.exports = router;

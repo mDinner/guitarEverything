@@ -1,3 +1,71 @@
+.about {
+    margin-top: 30px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.aboutAxes {
+    float: left;
+}
+
+.aboutClosure {
+    text-align: center;
+    font-size: 17px;
+    color: rgba(0,0,0,0.5);
+    margin-top: 20px;
+}
+
+.aboutDescription {
+    margin: 15px;
+    text-align: center;
+}
+
+.aboutPages {
+    margin-top: 30px;
+    margin-left: 55px;
+}
+
+.aboutPages :hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#addFx {
+    width: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+a.addFxButton {
+    color: white;
+}
+
+a.addFxButton:hover {
+    text-decoration: none;
+    color: white;
+}
+
+addFxButtonContainer {
+    margin-bottom: 35px;
+}
+
+.addGuitarButton {
+    margin-top: 50px;
+    float: right;
+    margin-right: 70px;
+}
+
+.comingSoonButton {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.comingSoonMessage {
+    text-align: center;
+}
+
 .container > h1 {
 	margin-top: 6rem!important;
 }
@@ -10,6 +78,12 @@
     margin-bottom: 12px;
     margin-right: 15px;
     width: 220px;
+}
+
+.docsAbout {
+    text-align: center;
+    font-size: 17px;
+    color: rgba(0,0,0,0.5);
 }
 
 .fxAll {
@@ -45,7 +119,7 @@
 }
 
 .guitarContainer{
-    margin: 70px 0px 20px 0px;
+    margin: 40px 0px 20px 0px;
     text-align: center;
 }
 .guitarDetail {
@@ -62,6 +136,20 @@
     cursor: pointer;
 }
 
+.guitarFormDetail {
+    margin-left: 100px;
+    width: 250px;
+    display: inline-block;
+    float: left;
+}
+
+.guitarImg {
+    display: inline-block;
+    float: left;
+    margin-left: 75px;
+    margin-top: 100px;
+}
+
 .guitarSearchTitle {
     margin-top: 0;
 }
@@ -71,10 +159,21 @@
     margin-top: 15px;
 }
 
+.guitarUpload {
+    margin-left: 175px;
+}
+
 .homeAbout {
     text-align: center;
     font-size: 17px;
     color: rgba(0,0,0,0.5);
+}
+
+.guitarImg .form-group .img-thumbnail {
+    height: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 200px;
 }
 
 .login, .register, span.glyphicon.glyphicon-log-in{
@@ -83,10 +182,14 @@
 }
 
 .login:hover, .register:hover {
-		background: rgb(52,58,64) !important;
-	}
+	background: rgb(52,58,64) !important;
+}
+
+body main .form-group select.form-control {
+    height: 34px !important;
+    padding: 6px 12px;
+}
 
 .siteTitle {
 	text-align: center;
-	
 }

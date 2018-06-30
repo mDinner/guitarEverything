@@ -1,5 +1,21 @@
+#register{
+	width: 400px;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	margin-top: 25px;
+}
+
+.registerButton {
+	float: right;
+}
+
 .register-header {
 	text-align: center;
+}
+
+.signupButton {
+	float: right;
 }
 
 /*form {

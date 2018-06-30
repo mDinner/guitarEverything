@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	if (window.location.pathname === '/') {
+		console.log('hey!!!')
 		var requestSuccess = false
 		var interval1 = setInterval(function() {
 			$.ajax({
@@ -38,6 +39,10 @@ $(document).ready(function(){
  $('#pic-upload').on('change`', function(e) {
  	console.log('e: ', e)
  	console.log('arguments: ', arguments)
- })
+ });
+
+
+ var myDropzone = new Dropzone("div#dropzoneInput", { url: "/file/post"});
+
 
 });
