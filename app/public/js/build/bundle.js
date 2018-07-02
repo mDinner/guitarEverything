@@ -120,17 +120,25 @@ $(document).ready(function(){
  	console.log('arguments: ', arguments)
  });
 
-
- var myDropzone = new Dropzone("div#dropzoneInput", { url: "/file/post"});
-
+ var dropzoneTarget = "div#dropzoneInput"
+ var dropZoneElem = $(dropzoneTarget)
+ if (dropZoneElem.length > 0) {
+	 var myDropzone = new Dropzone(dropzoneTarget, { url: "/file/post"});
+ }
 
 });
 },{}],4:[function(require,module,exports){
-$(document).ready(function(){
-  $('a.nav-link').on('click', function(){
-    console.log('poop');
-  })
-});
+(function($) {
+
+	$(document).ready(function(e) {
+	  console.log('POOP');
+	  $('button').on('click', function(e){
+	    console.log('stain');
+	  })
+	})
+
+})(jQuery)
+
 },{}],5:[function(require,module,exports){
 function post(target, nextPath) {
   

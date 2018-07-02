@@ -17,6 +17,7 @@ var bcrypt = require('bcrypt');
 			if (err)
 				res.send(err);
 			res.json({message: 'Welcome, ' + user.username});
+			res.redirect('/')
 		})
 	})
 
@@ -49,7 +50,7 @@ var bcrypt = require('bcrypt');
 				req.session.user = user.fname;
 				req.session.userEmail = user.email;
 				req.session.save();
-				res.render('/membersHome');
+				res.redirect('/');
 
 			} else {
 
