@@ -48,19 +48,16 @@ var upload = multer({
 	storage: multerS3({
 		s3: s3,
 		bucket: 'guitardictionary',
-		metadata: function (req, file, cb) {
-			console.log('file: ', file)
-			cb(null, {imageFile: file.imageFile.data});
-		},
 		key: function (req, file, cb) {
 			console.log('file key: ', file)
 			cb(null, Date.now().toString())
 		}
 	})
-}).single('photo')
+})
 
 router.post('/guitarsData', function(req, res, next) {
 	console.log('req.files: ', req.files);
+	console.log('req.body: ', req.body)
 
 	var guitar = new Guitar();
 	guitar.brand = req.body.brand;
@@ -71,24 +68,46 @@ router.post('/guitarsData', function(req, res, next) {
 	guitar.scale = req.body.scale;
 	guitar.year = req.body.year;
 	guitar.imageUrl = req.body.imageUrl;
-	guitar.imageFile = req.body.imageFile;
+	// guitar.imageFile = req.body.imageFile;
 
-	upload(req, res, function(err) {
-		console.log('req.files.imageFile.data: ', req.files.imageFile.data)
-		if (err) {
-			console.log('err: ', err)
-		}
 
-		console.log('uploaded!')
-	})
 
+
+	// upload(req, res, function(err) {
+	// 	if (err) {
+	// 		console.log('err: ', err)
+	// 	}
+
+	// 	console.log('uploaded!')
+	// })
+	
+		console.log('uploaded!??!!?!')
 	console.log('guitar.imageFile: ', guitar.imageFile);
+
 
 
 	guitar.save(function(err) {
 		if (err) {
 			res.send(err);
 		}
+
+		var fileData = req.files.imageFile.data;
+		console.log('fileData: ', fileData);
+		s3.putObject({
+			Bucket: 'guitardictionary',
+			Key: Date.now().toString() + req.files.imageFile.name,
+			Body: fileData,
+			ACL: 'public-read'
+		}, function(err, data) {
+			if (err) {
+				console.log('err: ', err);
+			} else {
+				console.log('maybe success???');
+			}
+		})
+
+
+
 		res.redirect('/');
 	});
 });

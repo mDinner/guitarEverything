@@ -1,7 +1,7 @@
 extends layout 
 block content 
 	h2.register-header Add Guitar
-	form(id="addGuitar" action="/guitarsData" method="POST" accept-charset="utf-8" ajax="true")
+	form(id="addGuitar" action="/guitarsData" method="POST" accept-charset="utf-8" ajax="true" enctype="multipart/form-data")
 		.guitarFormDetail
 			.form-group
 				label Brand
@@ -43,5 +43,7 @@ block content
 			.form-group.guitarUpload
 				label Upload Picture
 				input(class="form-control-file" type="file" name="imageFile" id="pic-upload")
-				#dropzoneInput
+				//- #dropzoneInput
 				img(class="img-thumbnail")
+	//- form(id="addGuitarPic" action="/guitarsPic" method="POST" enctype="multipart/form-data")
+	//- 	input(type="file" name="guitarPic")
