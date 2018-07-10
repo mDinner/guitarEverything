@@ -34,11 +34,14 @@ block content
 			.form-group
 				label Year
 				input(class="form-control" value="2000" type="number" min="1700" max="2050" step="01")
+			.form-group
+				label Image Url
+				input(class="form-control" type="text" name="imageUrl")
+			br
+			button.addGuitarButton(type="submit" class="btn btn-success") Add Guitar
 		.guitarImg
 			.form-group.guitarUpload
 				label Upload Picture
-				input(class="form-control-file" type="file" name="picture" id="pic-upload")
+				input(class="form-control-file" type="file" name="imageFile" id="pic-upload")
 				#dropzoneInput
-				//- img(class="img-thumbnail")
-			br
-			button.addGuitarButton(type="submit" class="btn btn-success") Add Guitar
+				img(class="img-thumbnail")

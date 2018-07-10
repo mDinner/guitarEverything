@@ -7,7 +7,8 @@ var guitarSchema = new mongoose.Schema({
 	soundType: String,
 	model: String,
 	scale: { type: String, default: ''},
-	year: {type: Date, default: ''}
+	year: {type: Date, default: ''},
+	imageUrl: String
 });
 
 module.exports = mongoose.model('Guitar', guitarSchema);

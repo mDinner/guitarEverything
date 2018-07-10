@@ -6,14 +6,13 @@ var monSess    = require('mongoose-session');
 var session    = require('express-session');
 var secrets    = require('./secrets')
 var app        = express(); 				// define our app using express
-var AWS        = require('aws-sdk'); // define aws-sdk and s3 services 
-var fs         = require('fs');
-var UploadStream = require("s3-stream-upload");
-var S3         = require("aws-sdk").S3;
+var fileUpload = require('express-fileupload')
 
-// s3-stream-upload vars
-var key = "file.mp3";
-var s3 = new S3();
+app.use(fileUpload())
+// var fs         = require('fs');
+// var UploadStream = require("s3-stream-upload");
+
+const bucket1 = 'bucket1';
 
 // app config
 app.use(bodyParser());
@@ -21,17 +20,18 @@ app.set('view engine', 'jade');
 app.set('views', path.join(__dirname, './app/views'));
 app.use(express.static(__dirname + '/app/public'));
 
+
 const connection = mongoose.createConnection(secrets.connectStr);
 const MongoStore = require('connect-mongo')(session);
 
 // set up sessions
-app.use(session({
-  key: 'session',
-  secret: 'doggy',
-  resave: false,
-  saveUninitialized: true,
-  store: new MongoStore({mongooseConnection: connection})
-}));
+// app.use(session({
+//   key: 'session',
+//   secret: 'doggy',
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new MongoStore({mongooseConnection: connection})
+// }));
 
 // uploadStream config
 // fs.readFileStream(__dirname + "/file.mp3")

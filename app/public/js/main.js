@@ -43,8 +43,10 @@ $(document).ready(function(){
 
  var dropzoneTarget = "div#dropzoneInput"
  var dropZoneElem = $(dropzoneTarget)
- if (dropZoneElem.length > 0) {
-	 var myDropzone = new Dropzone(dropzoneTarget, { url: "/file/post"});
+ if (dropZoneElem.length === 0) {
+	 var myDropzone = new Dropzone(dropzoneTarget);
  }
+
+//  var images = 
 
 });
