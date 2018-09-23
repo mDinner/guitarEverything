@@ -11,7 +11,7 @@ $(document).ready(function(){
 		    success: function(guitars) {
 		      guitars.forEach(function(guitar) {
 			    	console.log(guitar)
-		        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+		        $('#result').append('<div class="guitarDetail col-md-3" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
 		      });
 		    }
 			});

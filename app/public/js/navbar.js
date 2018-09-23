@@ -8,3 +8,18 @@
 	})
 
 })(jQuery)
+
+
+function plusOne(){
+  let val = 0
+  return function(){
+  	val = val + 1
+    return val
+  }
+} 
+let test = plusOne();
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())

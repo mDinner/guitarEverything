@@ -90,7 +90,7 @@ $(document).ready(function(){
 		    success: function(guitars) {
 		      guitars.forEach(function(guitar) {
 			    	console.log(guitar)
-		        $('#result').append('<div class="guitarDetail" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
+		        $('#result').append('<div class="guitarDetail col-md-3" id="' + guitar._id + '"><h2>Details: </h2> Brand: ' +  guitar.brand + ' <br /> Type: ' + guitar.guitarType + ' <br />Model: ' + guitar.model + '</div>');
 		      });
 		    }
 			});
@@ -141,6 +141,20 @@ $(document).ready(function(){
 
 })(jQuery)
 
+
+function plusOne(){
+  let val = 0
+  return function(){
+  	val = val + 1
+    return val
+  }
+} 
+let test = plusOne();
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())
+console.log('test: ', test())
 },{}],5:[function(require,module,exports){
 function post(target, nextPath) {
   

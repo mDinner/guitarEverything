@@ -122,14 +122,17 @@ addFxButtonContainer {
     margin: 40px 0px 20px 0px;
     text-align: center;
 }
-.guitarDetail {
+/* .guitarDetail {
     border: 0.25px solid lightgray;
     box-shadow: -2px 4px 5px 4px lightgrey;
     display: inline-block;
     margin: 25px 50px;
-    min-width: 250px;
+    min-width: 250px; 
     padding: 40px 50px;
-}
+    width: 250px;
+    height: 210px
+} 
+*/
 
 .guitarDetail:hover {
     border: 0.25px solid black;
