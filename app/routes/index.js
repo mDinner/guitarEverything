@@ -34,7 +34,7 @@ router.get('/guitarsData', function(req, res) {
 	});
 });
 
-router.post('/searchData', function(req, res){
+router.post('/guitarSearchData', function(req, res){
 	// make sure we don't get false positives by matching results with empty fields
 	var unmatchableString = '1H3njbi3#!!@#1j01#$#@';
 
