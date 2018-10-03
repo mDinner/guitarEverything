@@ -56,6 +56,11 @@ addFxButtonContainer {
     margin-right: 70px;
 }
 
+body {
+    background-color: #6c928ea8 !important;
+    color: #e1f1ef;
+}
+
 .comingSoonButton {
     position: absolute;
     left: 50%;
@@ -68,16 +73,6 @@ addFxButtonContainer {
 
 .container > h1 {
 	margin-top: 6rem!important;
-}
-
-#createGuitar {
-	margin-left: 10px;
-}
-#createGuitar input {
-    height: 30px;
-    margin-bottom: 12px;
-    margin-right: 15px;
-    width: 220px;
 }
 
 .docsAbout {
@@ -112,7 +107,6 @@ addFxButtonContainer {
     padding: 150px;
 }
 
-}
 .guitar {
 	height: 200px;
 	margin: auto;
@@ -122,21 +116,29 @@ addFxButtonContainer {
     margin: 40px 0px 20px 0px;
     text-align: center;
 }
-/* .guitarDetail {
-    border: 0.25px solid lightgray;
-    box-shadow: -2px 4px 5px 4px lightgrey;
-    display: inline-block;
-    margin: 25px 50px;
-    min-width: 250px; 
-    padding: 40px 50px;
-    width: 250px;
-    height: 210px
+.details {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: -2px 4px 5px 4px grey;
+    margin: 10px;
+    left: 10%;
+    padding: 50px 40px 60px;
 } 
-*/
 
-.guitarDetail:hover {
-    border: 0.25px solid black;
+.fx {
+    display: inline-block;
+    min-width: 220px;
+
+}
+
+#fx {
+    margin-top: 30px;
+}
+
+.details:hover {
+    border: 1px solid #ccc;
     cursor: pointer;
+    box-shadow: -2px 4px 5px 4px grey;
 }
 
 .guitarFormDetail {
@@ -191,6 +193,17 @@ addFxButtonContainer {
 body main .form-group select.form-control {
     height: 34px !important;
     padding: 6px 12px;
+}
+
+#searchGuitars {
+	margin-left: 10px;
+}
+
+#searchGuitars input {
+    height: 30px;
+    margin-bottom: 12px;
+    margin-right: 15px;
+    width: 220px;
 }
 
 .siteTitle {

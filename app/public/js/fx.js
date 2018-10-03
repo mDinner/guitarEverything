@@ -19,7 +19,7 @@ $(document).ready(function(e) {
         var elements = '';
         fxs.forEach(function(fx) {
           console.log('fx: ', fx)
-          elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';
+          elements += '<div class="details fx"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';
           displayedFx.push({
             fxType: fx.fxType,
             data: fx
@@ -43,7 +43,7 @@ $(document).ready(function(e) {
       displayedFx.forEach(function (fx) {
         // if element is in selected types, add it
         if (selectedTypes.indexOf(fx.fxType) !== -1) {
-          elements += '<div class="fxAll"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
+          elements += '<div class="details"><div class="fxBrand">' + 'Brand: ' + fx.brand + '</div><div class="fxType"> Type: ' + fx.fxType + '</div><div class="fxName"> Name: ' + fx.fxName + '</div></div>';        
         }
       }); 
       $('#fx').append(elements);

@@ -1,14 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var Guitar = require('../models/guitar.js')
-var AWS        = require('aws-sdk'); // define aws-sdk and s3 services 
+var Guitar = require('../models/guitar.js');
+var AWS = require('aws-sdk');
 var fs = require('fs');
-var s3         = new AWS.S3();
-
-
-
-var multer = require('multer')
-var multerS3 = require('multer-s3')
+var s3 = new AWS.S3();
+var multer = require('multer');
+var multerS3 = require('multer-s3');
 
 
 router.get('/',function(req, res){
@@ -30,10 +27,32 @@ router.get('/docs', function(req, res) {
 router.get('/guitarsData', function(req, res) {
 	Guitar.find(function(err, guitars) {
 		if (err){
-			res.send(err);	
+			res.send(err);
 		}else{
 			res.json(guitars);	
 		}
+	});
+});
+
+router.post('/searchData', function(req, res){
+	// make sure we don't get false positives by matching results with empty fields
+	var unmatchableString = '1H3njbi3#!!@#1j01#$#@';
+
+	var brand = req.body.brand === '' ? unmatchableString : req.body.brand;
+	var guitarType = req.body.guitarType === '' ? unmatchableString : req.body.guitarType;
+	var model = req.body.model === '' ? unmatchableString : req.body.model;
+
+	var query = {$or:[
+		{brand: brand},
+		{guitarType: guitarType},
+		{model: model}
+	]};
+
+	Guitar.find(query, function(err, data) {
+		if (err) {
+			res.send(err);
+		}
+		res.json(data);
 	});
 });
 
@@ -41,8 +60,6 @@ router.get('/guitarsData', function(req, res) {
 //   if (err) throw err;
 //   console.log(data);
 // });
-
-
 
 var upload = multer({
 	storage: multerS3({
@@ -68,45 +85,28 @@ router.post('/guitarsData', function(req, res, next) {
 	guitar.scale = req.body.scale;
 	guitar.year = req.body.year;
 	guitar.imageUrl = req.body.imageUrl;
-	// guitar.imageFile = req.body.imageFile;
-
-
-
-
-	// upload(req, res, function(err) {
-	// 	if (err) {
-	// 		console.log('err: ', err)
-	// 	}
-
-	// 	console.log('uploaded!')
-	// })
-	
-		console.log('uploaded!??!!?!')
-	console.log('guitar.imageFile: ', guitar.imageFile);
-
-
 
 	guitar.save(function(err) {
 		if (err) {
 			res.send(err);
 		}
 
-		var fileData = req.files.imageFile.data;
-		console.log('fileData: ', fileData);
-		s3.putObject({
-			Bucket: 'guitardictionary',
-			Key: Date.now().toString() + req.files.imageFile.name,
-			Body: fileData,
-			ACL: 'public-read'
-		}, function(err, data) {
-			if (err) {
-				console.log('err: ', err);
-			} else {
-				console.log('maybe success???');
-			}
-		})
-
-
+		// save file to s3 bucket
+		if (req.files.imageFile) {
+			var fileData = req.files.imageFile.data;
+			s3.putObject({
+				Bucket: 'guitardictionary',
+				Key: Date.now().toString() + req.files.imageFile.name,
+				Body: fileData,
+				ACL: 'public-read'
+			}, function(err, data) {
+				if (err) {
+					console.log('err: ', err);
+				} else {
+					console.log('uploaded to s3 successfully, fileData: ', fileData);
+				}
+			});
+		}
 
 		res.redirect('/');
 	});
